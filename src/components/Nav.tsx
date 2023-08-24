@@ -16,7 +16,7 @@ import { BuiltInProviderType } from "next-auth/providers/index";
 interface Props {}
 
 const Nav: NextPage<Props> = ({}) => {
-    const isUserLoggedIn = true;
+    const { data: session } = useSession();
     const [providers, setProviders] = useState<Record<
         LiteralUnion<BuiltInProviderType, string>,
         ClientSafeProvider
@@ -43,10 +43,9 @@ const Nav: NextPage<Props> = ({}) => {
                 />
                 <p className="logo_text">Next Prompts</p>
             </Link>
-
             {/* Desktop Navigation */}
             <div className="sm:flex hidden">
-                {isUserLoggedIn ? (
+                {session?.user ? (
                     <div className="flex gap-3 md:gap-5">
                         <Link href={"/create-prompt"} className="black_btn">
                             Create Post
@@ -88,7 +87,7 @@ const Nav: NextPage<Props> = ({}) => {
             </div>
             {/* Mobile Navigation */}
             <div className="sm:hidden flex relative">
-                {isUserLoggedIn ? (
+                {session?.user ? (
                     <div className="flex">
                         <Image
                             src={"/assets/images/logo.svg"}
