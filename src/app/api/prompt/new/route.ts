@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+
 import { connectToDB } from "@/utils/database";
 import Prompt from "@/models/prompt";
 export const POST = async (req: Request, res: Response) => {
