@@ -42,16 +42,16 @@ const UpdatePrompt: NextPage<Props> = ({}) => {
         if (promptId) getPromptDetails();
     }, [promptId]);
 
-    const createPrompt = async (e: FormEvent<HTMLFormElement>) => {
+    const updatePrompt = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSubmitting(true);
+        if (!promptId) return alert("prompt ID not found");
         try {
             if (session && session.user && session?.user.email) {
-                const res = await fetch("/api/prompt/new", {
-                    method: "POST",
+                const res = await fetch(`/api/prompt/${promptId}`, {
+                    method: "PATCH",
                     body: JSON.stringify({
                         prompt: post.prompt,
-                        userId: session.user.id,
                         tag: post.tag,
                     }),
                 });
@@ -68,11 +68,11 @@ const UpdatePrompt: NextPage<Props> = ({}) => {
     };
     return (
         <Form
-            type="Create"
+            type="Edit"
             post={post}
             setPost={setPost}
             submitting={submitting}
-            handleSumbit={createPrompt}
+            handleSumbit={updatePrompt}
         />
     );
 };

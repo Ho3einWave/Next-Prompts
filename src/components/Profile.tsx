@@ -19,7 +19,7 @@ interface Props {
     desc: string;
     data: PostType[];
     handleEdit: (post: PostType) => void;
-    handleDelete: () => void;
+    handleDelete: (post: PostType) => void;
 }
 
 const Profile: NextPage<Props> = ({
@@ -41,6 +41,7 @@ const Profile: NextPage<Props> = ({
                         key={post._id}
                         post={post}
                         handleEdit={() => handleEdit && handleEdit(post)}
+                        handleDelete={() => handleDelete && handleDelete(post)}
                     />
                 ))}
             </div>

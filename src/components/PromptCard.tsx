@@ -18,9 +18,9 @@ type PostType = {
 };
 interface Props {
     post: PostType;
-    handleTagClick?: () => {};
+    handleTagClick?: (tag: string) => void;
     handleEdit?: () => void;
-    handleDelete?: () => {};
+    handleDelete?: () => void;
 }
 
 interface pSessionType extends Session {
@@ -76,6 +76,7 @@ const PromptCard: NextPage<Props> = ({
                         }
                         width={12}
                         height={12}
+                        alt="Copy Icon"
                     />
                 </div>
             </div>
@@ -86,7 +87,7 @@ const PromptCard: NextPage<Props> = ({
                 className="font-inter text-sm blue_gradient cursor-pointer"
                 onClick={() => handleTagClick && handleTagClick(post.tag)}
             >
-                {post.tag}
+                #{post.tag}
             </p>
             {session?.user?.id === post.creator._id &&
                 pathName === "/profile" && (
