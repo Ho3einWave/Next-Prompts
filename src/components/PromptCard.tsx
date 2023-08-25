@@ -41,6 +41,7 @@ const PromptCard: NextPage<Props> = ({
 }) => {
     const { data: session }: { data: pSessionType | null } = useSession();
     const pathName = usePathname();
+    const router = useRouter();
     const [copied, setCopied] = useState("");
     const handleCopy = () => {
         setCopied(post.prompt);
@@ -58,7 +59,14 @@ const PromptCard: NextPage<Props> = ({
                         height={40}
                         className="rounded-full object-contain"
                     />
-                    <div className="flex flex-col">
+                    <div
+                        className="flex flex-col"
+                        onClick={() => {
+                            router.push(
+                                `/profile/${post.creator._id}/?name=${post.creator.username}`
+                            );
+                        }}
+                    >
                         <h3 className="font-satoshi font-semibold text-gray-900">
                             @{post.creator.username}
                         </h3>

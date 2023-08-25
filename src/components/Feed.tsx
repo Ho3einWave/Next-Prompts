@@ -43,8 +43,8 @@ const Feed: NextPage<Props> = ({}) => {
     const [searchTimeout, setSearchTimeout] = useState<ReturnType<
         typeof setTimeout
     > | null>(null);
-    const [searchResult, setSearchResult] = useState([]);
     const [posts, setPosts] = useState([]);
+    const [searchResult, setSearchResult] = useState([]);
 
     const filterPrompts = (searchtext: string) => {
         const regex = new RegExp(searchtext, "i");
@@ -75,6 +75,7 @@ const Feed: NextPage<Props> = ({}) => {
             const res = await fetch("/api/prompt");
             const data = await res.json();
             setPosts(data);
+            setSearchResult(data);
         };
 
         fetchPosts();
