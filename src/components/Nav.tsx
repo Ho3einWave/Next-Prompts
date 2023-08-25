@@ -61,7 +61,11 @@ const Nav: NextPage<Props> = ({}) => {
                         </button>
                         <Link href={"/profile"}>
                             <Image
-                                src={"/assets/images/logo.svg"}
+                                src={
+                                    session.user && session.user.image
+                                        ? session.user.image
+                                        : "/assets/images/logo.svg"
+                                }
                                 height={37}
                                 width={37}
                                 className="rounded-full"
@@ -90,7 +94,11 @@ const Nav: NextPage<Props> = ({}) => {
                 {session?.user ? (
                     <div className="flex">
                         <Image
-                            src={"/assets/images/logo.svg"}
+                            src={
+                                session.user && session.user.image
+                                    ? session.user.image
+                                    : "/assets/images/logo.svg"
+                            }
                             height={37}
                             width={37}
                             className="rounded-full"
