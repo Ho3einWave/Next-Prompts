@@ -53,7 +53,11 @@ const PromptCard: NextPage<Props> = ({
             <div className="flex justify-between items-start gap-5">
                 <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
                     <Image
-                        src={post.creator.image}
+                        src={
+                            post.creator.image
+                                ? post.creator.image
+                                : "/assets/images/avatar.svg"
+                        }
                         alt={"User Image"}
                         width={40}
                         height={40}
@@ -67,10 +71,10 @@ const PromptCard: NextPage<Props> = ({
                             );
                         }}
                     >
-                        <h3 className="font-satoshi font-semibold text-gray-900">
+                        <h3 className="font-inter font-semibold text-white/80">
                             @{post.creator.username}
                         </h3>
-                        <p className="font-inter text-sm text-gray-500">
+                        <p className="font-inter text-sm text-white/50">
                             {post.creator.email}
                         </p>
                     </div>
@@ -88,7 +92,7 @@ const PromptCard: NextPage<Props> = ({
                     />
                 </div>
             </div>
-            <p className="my-4 font-satoshi text-sm text-gray-700">
+            <p className="my-4 font-inter text-sm text-white/90">
                 {post.prompt}
             </p>
             <p

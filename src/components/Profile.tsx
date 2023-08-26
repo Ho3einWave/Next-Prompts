@@ -35,7 +35,7 @@ const Profile: NextPage<Props> = ({
                 <span className="blue_gradient">{name} Profile</span>
             </h1>
             <p className="desc">{desc}</p>
-            <div className="mt-16 prompt-layout">
+            <div className="mt-16 prompt_layout">
                 {data.map((post) => (
                     <PromptCard
                         key={post._id}

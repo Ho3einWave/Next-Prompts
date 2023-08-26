@@ -34,7 +34,7 @@ const Form: NextPage<Props> = ({
                 onSubmit={handleSumbit}
             >
                 <label>
-                    <span className="font-satoshi font-semibold text-base text-gray-700">
+                    <span className="font-satoshi font-semibold text-base text-white/80">
                         Your AI Prompt
                     </span>
                     <textarea
@@ -48,7 +48,7 @@ const Form: NextPage<Props> = ({
                     ></textarea>
                 </label>
                 <label>
-                    <span className="font-satoshi font-semibold text-base text-gray-700">
+                    <span className="font-satoshi font-semibold text-base text-white/80">
                         Tag{" "}
                         <span className="font-normal">
                             (#product, #webdevelopment, #idea)
@@ -59,7 +59,7 @@ const Form: NextPage<Props> = ({
                         onChange={(e) =>
                             setPost({ ...post, tag: e.target.value })
                         }
-                        placeholder="#tag"
+                        placeholder="tag"
                         required
                         className="form_input"
                     ></input>
